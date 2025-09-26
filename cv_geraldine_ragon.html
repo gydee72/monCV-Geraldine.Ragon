@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géraldine Ragon - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="80" r="2.5" fill="white" opacity="0.1"/></svg>');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 3px solid #3498db;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #e74c3c;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #ecf0f1;
+            position: relative;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+        
+        .experience-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .experience-company {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .experience-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .experience-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .languages {
+            margin-bottom: 20px;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .language-level {
+            background: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .interest-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .name {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">GÉRALDINE RAGON</h1>
+                <p class="title">Assistante Administrative Comptable</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>geraldine.ragon@gmx.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>0494/41 05 20</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Rue de la fraternité 23, 7130 Binche</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Compétences Techniques</h2>
+                    <div class="skill-category">
+                        <h4>Logiciels Comptables</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Odoo</span>
+                            <span class="skill-tag">ERP Winbooks</span>
+                            <span class="skill-tag">Winbooks</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Suite Office</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Excel Avancé</span>
+                            <span class="skill-tag">Word</span>
+                            <span class="skill-tag">PowerPoint</span>
+                            <span class="skill-tag">Power BI</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Développement Web</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">WordPress</span>
+                            <span class="skill-tag">Elementor</span>
+                            <span class="skill-tag">Python (base)</span>
+                            <span class="skill-tag">SQL (base)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Autres Outils</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Newsletter</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">SEO</span>
+                            <span class="skill-tag">Réseaux sociaux</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Langues</h2>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span>Français</span>
+                            <span class="language-level">Natif</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Anglais</span>
+                            <span class="language-level">A1</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Qualités Personnelles</h2>
+                    <div class="interests">
+                        <span class="interest-tag">Sérieuse</span>
+                        <span class="interest-tag">Appliquée</span>
+                        <span class="interest-tag">Ponctuelle</span>
+                        <span class="interest-tag">Autonome</span>
+                        <span class="interest-tag">Esprit d'analyse</span>
+                        <span class="interest-tag">Esprit de synthèse</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Centres d'Intérêt</h2>
+                    <div class="interests">
+                        <span class="interest-tag">Nouvelles technologies</span>
+                        <span class="interest-tag">Artiste animalière</span>
+                        <span class="interest-tag">Informatique</span>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+                    
+                    <div class="experience-item">
+                        <h3 class="experience-title">Stage Comptabilité/Logistique</h3>
+                        <p class="experience-company">Vignoble des Agaises - Haulchin (Ruffus)</p>
+                        <p class="experience-date">Février 2025</p>
+                        <p class="experience-desc">
+                            Stage dans le cadre de ma formation de technicienne en comptabilité. Gestion des opérations comptables courantes, suivi de la logistique et découverte du secteur viticole.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Aide Ménagère - Titre Service</h3>
+                        <p class="experience-company">Ekoservices Binche</p>
+                        <p class="experience-date">Mars 2022 - Juin 2023</p>
+                        <p class="experience-desc">
+                            Prestation de services d'aide ménagère auprès de particuliers. Gestion autonome de planning, respect des consignes client, maintien d'une relation de confiance avec la clientèle.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Développeuse Web Freelance</h3>
+                        <p class="experience-company">Smartbe.be (Auto-entreprise)</p>
+                        <p class="experience-date">Octobre 2018</p>
+                        <p class="experience-desc">
+                            Création d'un site web professionnel pour un cabinet d'architecture. Développement avec WordPress et Elementor, personnalisation CSS avancée, mise en ligne et formation du client à la gestion de contenu.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Missions Intérim Diverses</h3>
+                        <p class="experience-company">Diverses entreprises</p>
+                        <p class="experience-date">2008 - 2016</p>
+                        <p class="experience-desc">
+                            Période dédiée à l'éducation de mes enfants avec missions intérimaires ponctuelles dans l'administration et la comptabilité pour maintenir mes compétences professionnelles.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Gérante d'Agences de Paris Sportifs</h3>
+                        <p class="experience-company">Tiercé Ladbrook - Dour et Erquennes</p>
+                        <p class="experience-date">Janvier 2006 - Mai 2007</p>
+                        <p class="experience-desc">
+                            Gestion complète de 2 agences de paris sportifs : encaissement des mises, gestion de la caisse, relation clientèle, suivi des résultats et paiements des gains. Responsabilité financière et administrative des deux points de vente.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Stagiaire Comptable + Intérim</h3>
+                        <p class="experience-company">Caterpillar Gosselies</p>
+                        <p class="experience-date">Novembre 2004 - Décembre 2004 + 1 mois intérim</p>
+                        <p class="experience-desc">
+                            Stage de fin d'études suivi d'une mission intérimaire. Traitement des écritures comptables, rapprochements bancaires, et découverte de l'environnement comptable d'une grande entreprise industrielle.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="experience-title">Aide-Soignante</h3>
+                        <p class="experience-company">HOME CORBISIER</p>
+                        <p class="experience-date">Juin 1991 - Septembre 1995</p>
+                        <p class="experience-desc">
+                            Soins aux résidents, assistance dans les actes de la vie quotidienne, travail en équipe pluridisciplinaire. Expérience enrichissante développant empathie, patience et sens des responsabilités.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Formation & Certifications</h2>
+                    
+                    <div class="education-item">
+                        <h3 class="experience-title">Formation Odoo (en cours)</h3>
+                        <p class="experience-company">Nalios</p>
+                        <p class="experience-date">Août 2025</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="experience-title">Technicienne en Comptabilité</h3>
+                        <p class="experience-company">Promsoc Mons</p>
+                        <p class="experience-date">Septembre 2023 - Juin 2025</p>
+                        <p class="experience-desc">Spécialités : IPP, ISOC, IPM, TVA - Certificat de qualification (CQ6)</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="experience-title">Formations Complémentaires</h3>
+                        <p class="experience-company">Udemy & LinkedIn Learning</p>
+                        <p class="experience-date">Septembre 2025</p>
+                        <p class="experience-desc">
+                            • SQL - Requête SQL (base)<br>
+                            • Power BI - Analyse de données
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="experience-title">Technique Commerciale</h3>
+                        <p class="experience-company">EICM - Jules Hiernaux, Charleroi</p>
+                        <p class="experience-date">1996 (CTSI)</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="experience-title">Comptabilité + Certificat de Gestion</h3>
+                        <p class="experience-company">IPEPS Binche</p>
+                        <p class="experience-date">2004</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
